@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Button</title>
+</head>
+<body>
+    <button onclick="onButtonPress()" id="btn">Counter 0</button>
+
+    <script>
+        function onButtonPress() {
+            const currentValue = document.getElementById("btn").innerHTML;//here we get the inner element as "counter 0"
+            const currentCounter = currentValue.split(" ")[1]; //it the value of "counter 0" is 0 as "counter","0"and we 
+            //try to access that 0 to change its state..
+            const newCounter = parseInt(currentCounter) + 1;//changing state
+            document.getElementById("btn").innerHTML = "Counter " + newCounter;//updating the html
+        }
+    </script>
+</body>
+</html>

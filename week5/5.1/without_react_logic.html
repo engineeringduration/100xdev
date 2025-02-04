@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div id="buttonParent">
+
+  </div>
+  <script>
+    let state = {
+      count: 0
+    }
+    //it is the logic on which react apllication : change its state --> update components --> rerender them
+
+    // in react as a developer we only needs to write that 'onbutton' and "buttonComponent" function else will handaled by react ?
+
+    function onButtonPress() {
+      state.count++; //change the statec
+      buttonComponentReRender() //calls to rerender the componets
+    }
+
+    function buttonComponentReRender() {
+    //   document.getElementById("buttonParent").innerHTML = "";//it clears the dom if i dont clear and it wiil keep adding buttons on a click
+      const component = buttonComponent(state.count); //create a new component
+     document.getElementById("buttonParent").appendChild(component);//add to parent
+    }
+
+    function buttonComponent(count) {
+      const button = document.createElement("button"); //create a new button
+      button.innerHTML = "Counter " + count;
+      button.setAttribute("onclick", 'onButtonPress()');
+      return button;//this is renamed as component and get apend  to parent
+    }
+
+    buttonComponentReRender();
+  </script>
+</body>
+
+</html>
