@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zerodha</title>
+
     <style>
         body {
             width: 100%;
@@ -13,12 +14,8 @@
         }
 
         .header {
-            font-family: "Inter", serif;
             font-size: 16px;
             width: 100%;
-            height: auto;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -41,8 +38,6 @@
         }
 
         nav.navc a {
-            margin: 0;
-            padding: 0;
             font-size: 16px;
             color: #333;
             text-decoration: none;
@@ -58,8 +53,7 @@
             width: 100%;
             max-height: 70vh;
             object-fit: cover;
-            margin-top: 50px;
-            margin-bottom: 50px;
+            margin: 50px 0;
         }
 
         .content {
@@ -90,6 +84,35 @@
         .content button:hover {
             background-color: #0056b3;
         }
+
+        .interest {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .interest input {
+            padding: 8px;
+            width: 200px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .interest button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #05a21c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .interest button:hover {
+            background-color: #0e8d00;
+        }
     </style>
 </head>
 <body>
@@ -113,5 +136,37 @@
         <p>Online platform to invest in stocks, derivatives, mutual funds, and more</p>
         <button>Sign Up Now</button>
     </div>
+
+    <div class="interest">
+        <h1>Interest Calculator</h1>
+        <p>Principal Amount</p>
+        <input id="Principal" type="number" placeholder="Enter Principal" required>
+
+        <p>Interest Rate (%)</p>
+        <input id="Interest" type="number" placeholder="Enter Interest Rate" required>
+
+        <p>Time (years)</p>
+        <input id="Time" type="number" placeholder="Enter Time in Years" required>
+
+        <p></p>
+        <button onclick="calculate()">Calculate Interest</button>
+        <p id="res"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var principal = document.getElementById("Principal").value;
+            var interest = document.getElementById("Interest").value;
+            var time = document.getElementById("Time").value;
+
+            if (!principal || !interest || !time) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            var result = (principal * interest * time) / 100;
+            document.getElementById("res").innerText = "The interest is: " + result.toFixed(2);
+        }
+    </script>
 </body>
 </html>
